@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-### To create a social media application,with below mentioned features
+### To create a social media application to communicate with other people
 
 <br>
 
@@ -32,17 +32,32 @@
 
 ### steps/solution
 
-- Using some technologies like
+- Mainly used 3 technologies like
     - NodeJs for backend
     - Reactjs for frontend
     - MongoDb for database
     - Also need to perform authentication
-- Nodejs
-    - for adding server side part like connecting to database and posting the data,getting the data.
-- Reactjs
-    - for adding client side pages like home page ,profile page etc.
-- MongoDb
-    - to store all the data like posts,description,profile data etc.
+- Backend
+    - ```for adding server side part like connecting to database and posting the data,getting the data.```
+- Frontend
+    - ```for adding client side pages to view like home page ,profile page etc.```
+- Database
+    - ```to store all the data like posts,description,profile data etc.```
 - Authentication
-    - to verify the users if they are logged in or not to allow them to watch posts,to add posts,and to send friend requests etc,.
+    - ```to verify the users if they are logged in or not to allow them to watch posts,to add posts,and to send friend requests etc,.```
     
+## Architectural diagram
+
+![alt text](architecture.png)
+
+<br>
+
+## Technologies used
+- NodeJs
+   - ``` Nodejs is an open-source,cross platform,backend javascript runtime environment that runs on v8 engine and exicutes js code outside a web browser.```
+
+- Reactjs
+    - ```React is a declarative,efficeint,and flexible javascript library for building user interfaces.it lets you compose complex UI's from small and isolated pieces of called components.```
+
+- MongoDB
+    - ```Mongodb is a non-relatinal document database that provides support for jSON-like storage.The mongodb database has a flexible data model that enables you to store unstructured data.```
