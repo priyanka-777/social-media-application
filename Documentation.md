@@ -61,3 +61,143 @@
 
 - MongoDB
     - ```Mongodb is a non-relatinal document database that provides support for jSON-like storage.The mongodb database has a flexible data model that enables you to store unstructured data.```
+<br>
+
+### Users Schema
+
+```
+{
+    email:string,
+    name:string,
+    password:string,
+    mobile:string,
+}
+```
+### Friendship
+
+```
+{
+    requester:Schema.Types.ObjectId,ref:Users,
+    receipient:Schema.Types.ObjectId,ref:Users,
+}
+```
+
+### User_post
+
+```
+{
+    post_id:string,
+    profile_id:string,
+    written_text:string,
+    media_location:url,
+    created_datetime:int,
+}
+```
+<br>
+
+### post_like
+```
+{
+    post_id:objectid,
+    profile_id:objectid,
+}
+```
+<br>
+
+### post_comment
+
+```{
+    post_id:objectid,
+    profile_id:objecctid,
+    comment:string,
+    created_datetime:int,
+}
+```
+
+<br>
+
+### Nodejs specifications
+
+### you will find the routes list here
+
+<br>
+
+### User Routes
+
+1) #### POST /user/login
+​
+Request body - 
+```
+{
+    email: string, ( Required )
+    password: string, ( Required, Must be atleast 8 characters )
+}
+```
+Response body ( 200 ) - 
+```
+{
+    userDetails: {
+        email: string,
+        name: string,
+        mobile: string,
+    }
+}
+```
+
+​
+Response body ( 400 ) - 
+```
+{
+    error: {
+        password: string, // Example - password: "must be atleast 8 characters"
+    }
+}
+```
+
+2) #### POST /user/signUp
+​
+Request body - 
+```
+{
+    username:string,(Required)
+    email: string, ( Required )
+    password: string, ( Required, Must be atleast 8 characters )
+}
+```
+Response body ( 200 ) - 
+```
+{
+    navigate to "user/login/" page
+    userDetails: {
+        email: string,
+        name: string,
+        mobile: string,
+    }
+}
+```
+
+​
+Response body ( 400 ) - 
+```
+{
+    error: {
+        password: string, // Example - password: "must be atleast 8 characters"
+    } 
+    error:{
+        email:String, // give a correct email adress
+    }
+}
+```
+
+​
+<br>
+​
+### React specifications
+​
+- Login Page
+    - Feature to enter email,password and login
+- Home page
+    - to represent posts,comments and likes
+- Signup page
+- profile 
+    - to add and edit the profile info
