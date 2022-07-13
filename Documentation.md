@@ -33,16 +33,9 @@
 ### steps/solution
 
 - Mainly used 3 technologies like
-    - NodeJs for backend
-    - Reactjs for frontend
-    - MongoDb for database
-    - Also need to perform authentication
-- Backend
-    - ```for adding server side part like connecting to database and posting the data,getting the data.```
-- Frontend
-    - ```for adding client side pages to view like home page ,profile page etc.```
-- Database
-    - ```to store all the data like posts,description,profile data etc.```
+    -  backend
+    - frontend
+    - database
 - Authentication
     - ```to verify the users if they are logged in or not to allow them to watch posts,to add posts,and to send friend requests etc,.```
     
@@ -53,14 +46,15 @@
 <br>
 
 ## Technologies used
+
 - NodeJs
-   - ``` Nodejs is an open-source,cross platform,backend javascript runtime environment that runs on v8 engine and exicutes js code outside a web browser.```
+   - ```Nodejs is an open-source,cross platform,backend javascript runtime environment that runs on v8 engine and exicutes js code outside a web browser.For adding server side part we use Nodejs. Like connecting to database and posting the data,getting the data ,for deleting the data or adding the data.It has High performance for real-time applications```
 
 - Reactjs
-    - ```React is a declarative,efficeint,and flexible javascript library for building user interfaces.it lets you compose complex UI's from small and isolated pieces of called components.```
+    - ```React is a declarative,efficeint,and flexible javascript library for building user interfaces.it lets you compose complex UI's from small and isolated pieces of called components.For adding client side pages to view like home page ,profile page etc.We can work with different routes easily.By seeing frontend page we can add or delete the posts easily.```
 
 - MongoDB
-    - ```Mongodb is a non-relatinal document database that provides support for jSON-like storage.The mongodb database has a flexible data model that enables you to store unstructured data.```
+    - ```Mongodb is a non-relatinal document database that provides support for jSON-like storage.The mongodb database has a flexible data model that enables you to store unstructured data.We use database to store all the data like posts,description,profile data etc.```
 <br>
 
 ### Users Schema
@@ -189,6 +183,35 @@ Response body ( 400 ) -
 }
 ```
 
+3) #### User/posts
+
+Request body-
+```
+{
+    photo:[string],
+    description: string, (required),
+    comment:string
+}
+```
+Response body(200)-
+```
+{
+    userPosts: {
+        photo: string,
+        description: string,
+        comment:string
+    }
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, // no posts yet
+    }
+}
+```
+
 ​
 <br>
 ​
@@ -199,5 +222,8 @@ Response body ( 400 ) -
 - Home page
     - to represent posts,comments and likes
 - Signup page
+    - we need to add email,username,mobile number,password
 - profile 
-    - to add and edit the profile info
+    - to add and edit the profile info like changing photo,name etc.
+- friends page
+    - we can see all our friends list here and some suggestions based on our friends list.
