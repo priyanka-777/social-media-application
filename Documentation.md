@@ -57,7 +57,7 @@
     - ```Mongodb is a non-relatinal document database that provides support for jSON-like storage.The mongodb database has a flexible data model that enables you to store unstructured data.We use database to store all the data like posts,description,profile data etc.```
 <br>
 
-### Users Schema
+### 1.Users Schema
 
 ```
 {
@@ -67,7 +67,7 @@
     mobile:string,
 }
 ```
-### Friendship
+### 2.Friendship schema
 
 ```
 {
@@ -76,7 +76,7 @@
 }
 ```
 
-### User_post
+### 3.User_post schema
 
 ```
 {
@@ -89,7 +89,19 @@
 ```
 <br>
 
-### post_like
+### 4.delete post schema
+```
+{
+    postid:{
+        username:characters,
+        type:mongoose,
+        photo:png,jpg,
+        deletepost:true,
+    }
+}
+```
+
+### 5.post_like schema
 ```
 {
     post_id:objectid,
@@ -98,16 +110,25 @@
 ```
 <br>
 
-### post_comment
+### 6.post_comment schema
 
-```{
+```
+{
     post_id:objectid,
     profile_id:objecctid,
     comment:string,
     created_datetime:int,
 }
 ```
+<br>
 
+### 7.Login schema
+```
+{
+    email/username:string,
+    password:,
+}
+```
 <br>
 
 ### Nodejs specifications
@@ -165,7 +186,8 @@ Response body ( 200 ) -
     userDetails: {
         email: string,
         name: string,
-        mobile: string,
+        mobile: int,
+        uid:int,
     }
 }
 ```
@@ -182,8 +204,34 @@ Response body ( 400 ) -
     }
 }
 ```
+3) #### POST /posts
 
-3) #### User/posts
+Request body-
+```
+{
+    uid:objectid,
+    photo:[jpg,png],
+    description: string, (required),
+    media_location:url,
+}
+```
+Response body(200)-
+```
+{
+        photo: [jpg.png],
+        description: string,
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, // given file format is wrong
+    }
+}
+```
+
+4) #### GET /posts
 
 Request body-
 ```
@@ -197,6 +245,7 @@ Response body(200)-
 ```
 {
     userPosts: {
+        username:characaters,
         photo: string,
         description: string,
         comment:string
@@ -211,16 +260,264 @@ Response body(400)-
     }
 }
 ```
+5) #### PUT /post
 
-​
-<br>
-​
+Request body-
+```
+{
+    postid:objectid,
+    photo:[string],
+    description: string, (required),
+    comment:string,
+}
+```
+Response body(200)-
+```
+{
+    updatedone: {
+        username:characaters,
+        photo: string,
+        description: string,
+        comment:string
+    }
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, //there is no post with given id
+    }
+}
+```
+6) #### DELETE /posts
+
+Request body-
+```
+{
+    uid:id,
+    photo:[string],
+    description: string, (required),
+}
+```
+Response body(200)-
+```
+{
+    deletepost: {
+        username:characaters,
+        photo: string,
+        description: string,
+        comment:string
+    }
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, // no posts yet
+    }
+}
+```
+7) #### POST /comment
+
+Request body-
+```
+{
+    uid:id,
+    postid:id,
+    comment:string,
+}
+```
+Response body(200)-
+```
+{
+    comment: {
+        username:characaters,
+        photo: string,
+        description: string,
+        comment:string
+    }
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, // check the characters involved,give correct type
+    }
+}
+```
+8) #### DELETE /comment
+
+Request body-
+```
+{
+    uid:id,
+    postid:id,
+    comment:string,
+}
+```
+Response body(200)-
+```
+{
+    comment: {
+        username:characaters,
+        photo: string,
+        description: string,
+        comment:string,
+        deleted:true,
+    }
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, // no comments yet
+    }
+}
+```
+9) #### PUT  /comment
+
+Request body-
+```
+{
+    uid:id,
+    postid:id,
+    comment:string,
+}
+```
+Response body(200)-
+```
+{
+    updatedcomment: {
+        username:characaters,
+        photo: string,
+        description: string,
+        comment:string(changed),
+    }
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, // no changes have made
+    }
+}
+```
+10) #### POST /like
+Request body-
+```
+{
+    uid:id,
+    postid:id,
+    like:emoji,
+}
+```
+Response body(200)-
+```
+{
+    post:jpg,
+    description:string,
+    comment:string,
+    like:true,
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, //
+    }
+}
+```
+11) #### GET /profile
+Request body-
+```
+{
+    uid:id,
+    profileid:id,
+}
+```
+Response body(200)-
+```
+{
+    profile:
+    photo:jpg,
+    username:characters,
+    email:string,
+    dateofbirth:int,
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, //no profile available with given id
+    }
+}
+```
+12) #### PUT /profile
+Request body-
+```
+{
+    uid:id,
+    photo:jpg,png,
+    username:characters,
+    email:string,
+    mobile:string,
+}
+```
+Response body(200)-
+```
+{
+    profile:
+    photo:jpg,
+    username:characters,
+    email:string,
+    dateofbirth:int,
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, //check the network connection
+    }
+}
+```
+13) ####  user/logout
+Request body-
+```
+{
+    username:characters,
+}
+```
+Response body(200)-
+```
+{
+    profile:loggedout,
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, //not logged out try again
+    }
+}
+```
+
 ### React specifications
 ​
 - Login Page
     - Feature to enter email,password and login
 - Home page
     - to represent posts,comments and likes
+    - user able to like/comment them
+    - able to delete their own posts
 - Signup page
     - we need to add email,username,mobile number,password
 - profile 
