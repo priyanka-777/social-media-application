@@ -61,10 +61,15 @@
 
 ```
 {
+    username:characters,
+    uid:id,
     email:string,
     name:string,
     password:string,
     mobile:string,
+    photo:png/jpg,
+    dateofbirth:int,
+    about:string,
 }
 ```
 ### 2.Friendship schema
@@ -89,19 +94,7 @@
 ```
 <br>
 
-### 4.delete post schema
-```
-{
-    postid:{
-        username:characters,
-        type:mongoose,
-        photo:png,jpg,
-        deletepost:true,
-    }
-}
-```
-
-### 5.post_like schema
+### 4.post_like schema
 ```
 {
     post_id:objectid,
@@ -110,7 +103,7 @@
 ```
 <br>
 
-### 6.post_comment schema
+### 5.post_comment schema
 
 ```
 {
@@ -122,16 +115,7 @@
 ```
 <br>
 
-### 7.Login schema
-```
-{
-    email/username:string,
-    password:,
-}
-```
-<br>
-
-### Nodejs specifications
+## Nodejs specifications
 
 ### you will find the routes list here
 
@@ -459,7 +443,9 @@ Response body(400)-
     }
 }
 ```
+
 12) #### PUT /profile
+
 Request body-
 ```
 {
@@ -488,7 +474,35 @@ Response body(400)-
     }
 }
 ```
-13) ####  user/logout
+13)  #### GET frndid/post
+
+Request body-
+```
+{
+    uid:object<id>,
+    username:character,
+
+}
+```
+Response body(200)-
+```
+{
+    photo:jpg,png,
+    description:string,
+    comments:string,
+}
+```
+Response body(400)-
+```
+{
+    error: {
+        type: string, //no user available with  that id
+    }
+}
+```
+
+14)  ####  user/logout
+
 Request body-
 ```
 {
