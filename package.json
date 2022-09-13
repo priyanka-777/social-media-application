@@ -1,0 +1,30 @@
+{
+  "name": "social_media_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyanka-777/social-media-application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priyanka-777/social-media-application/issues"
+  },
+  "homepage": "https://github.com/priyanka-777/social-media-application#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
+    "mongoose": "^6.5.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16"
+  }
+}
